@@ -30,7 +30,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#16776F",
+  // Match the dark canvas so the status bar blends into the night theme (DESIGN.md).
+  themeColor: "#0A0B0D",
 };
 
 export default function RootLayout({

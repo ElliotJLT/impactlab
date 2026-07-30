@@ -90,7 +90,7 @@ One owner per area. Cross-area change → tell the owner, or do it in a separate
 |---|---|---|
 | `docs/` | anyone | Append, don't rewrite others' entries |
 | `prompts/`, `data/`, `docs/API.md` | Elliot | The LLM lane: master prompt, seed archive, API contract |
-| App scaffold + layout | _whoever is scaffolding — put your name here_ | Code against `docs/API.md` |
+| App scaffold + layout | Samantha (scaffold) · Elliot (dream wiring + entry UX, 011) | Code against `docs/API.md` |
 | _TBD_ | | |
 | _TBD_ | | |
 

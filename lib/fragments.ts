@@ -1,65 +1,93 @@
-import type { Fragment } from "./prompt";
+import seed from "@/data/archive.seed.json";
 
-// Demo persona: Maya, documentary filmmaker. NOT a database — seed data + localStorage.
-// The buried thread (her father's silence) recurs in different words, never named as the
-// subject; the stated subject (the town) and craft logistics are also present so the
-// buried thread stands out against them. See docs/scope-DRAFT-samantha.md.
-export const PRACTICE = "documentary film";
+// The archive — the docs/API.md contract shape, POSTed verbatim to /api/dream.
+// NOT a database: the committed seed plus any live notes, kept in localStorage.
+// Seed persona: Sam, standup, stated hour about renting in London; buried
+// workshop/hands thread. See data/archive.seed.json's _readme.
+export type Note = { id: string; text: string; at: string };
 
-export const SEED_FRAGMENTS: Fragment[] = [
-  { ts: "Mon 08:14", text: "Establishing shot idea — the empty parking lot where the shift used to line up. Nobody there now. Just gulls." },
-  { ts: "Mon 21:03", text: "Dad never once said the word 'redundant'. Fifteen years and he called it 'the change'." },
-  { ts: "Tue 12:47", text: "Interview the union rep about the closure timeline. Need the actual dates the lines shut down." },
-  { ts: "Tue 19:22", text: "The chair at the head of the table. He'd sit there after his shift and just... not talk. Mum filled the silence." },
-  { ts: "Wed 07:58", text: "B-roll: the river behind the plant, the rusted loading doors. Town-decline montage material." },
-  { ts: "Wed 22:41", text: "Remembered tonight — the way he'd go quiet the second the local news came on. Like he was bracing." },
-  { ts: "Thu 13:15", text: "Get the archive footage of the factory's opening day, 1974. Council might have it." },
-  { ts: "Thu 20:09", text: "It wasn't the money that broke him. It was that nobody asked him how he was. He just went smaller." },
-  { ts: "Fri 09:30", text: "Structure thought: open on the town thriving, close on the boarded windows. The arc of a place." },
-  { ts: "Fri 23:12", text: "I keep coming back to his hands on the kitchen table. Not doing anything. That's the shot I actually want." },
-  { ts: "Sat 16:44", text: "Need a stat on how many jobs went when the plant closed. Roughly 800?" },
-  { ts: "Sun 21:50", text: "Maybe the film isn't as much about the town as I keep telling people it is. But about the town, obviously." },
-];
+export type ArchiveUser = {
+  name: string;
+  practice: string;
+  stated_priority: string;
+  idea_shape: string;
+  dormant_project?: string;
+};
 
-const STORAGE_KEY = "nocturne.fragments.v1";
+export type Archive = { user: ArchiveUser; notes: Note[] };
 
-// Read fragments from localStorage, falling back to the seed set on first run.
-export function loadFragments(): Fragment[] {
-  if (typeof window === "undefined") return SEED_FRAGMENTS;
+const STORAGE_KEY = "nocturne.archive.v1";
+
+const SEED: Archive = { user: seed.user, notes: seed.notes };
+
+export function loadArchive(): Archive {
+  if (typeof window === "undefined") return SEED;
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_FRAGMENTS));
-      return SEED_FRAGMENTS;
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED));
+      return SEED;
     }
-    return JSON.parse(raw) as Fragment[];
+    return JSON.parse(raw) as Archive;
   } catch {
-    return SEED_FRAGMENTS;
+    return SEED;
   }
 }
 
-export function appendFragment(text: string): Fragment[] {
-  const fragments = loadFragments();
-  const ts = nowLabel();
-  const next = [...fragments, { ts, text: text.trim() }];
+// Live notes get id "live-N" and an ISO timestamp — docs/API.md. cycle_at is
+// stamped server-side; a live note within 24h of it is what can trigger a eureka.
+export function appendNote(text: string): Archive {
+  const archive = loadArchive();
+  const liveCount = archive.notes.filter((n) => n.id.startsWith("live-")).length;
+  const note: Note = {
+    id: `live-${liveCount + 1}`,
+    text: text.trim(),
+    at: new Date().toISOString(),
+  };
+  const next = { ...archive, notes: [...archive.notes, note] };
   if (typeof window !== "undefined") {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   }
   return next;
 }
 
-export function resetFragments(): Fragment[] {
+export function resetArchive(): Archive {
   if (typeof window !== "undefined") {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_FRAGMENTS));
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED));
   }
-  return SEED_FRAGMENTS;
+  return SEED;
 }
 
-// "Sun 21:50"-style label to match the seed set's format.
-function nowLabel(): string {
-  const d = new Date();
-  const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][d.getDay()];
-  const hh = String(d.getHours()).padStart(2, "0");
-  const mm = String(d.getMinutes()).padStart(2, "0");
-  return `${day} ${hh}:${mm}`;
+// "Wed 18 Jun, 08:42" — history rows.
+export function noteTimeLabel(at: string): string {
+  const d = new Date(at);
+  const day = d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  const time = d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+  return `${day}, ${time}`;
+}
+
+// Entry prompts — docs/ENTRY-UX.md. One question, not a menu; observational,
+// not productive. First visit gets the standing invitation; returns rotate.
+export const FIRST_INVITATION = "What’s rattling around today?";
+
+const RETURN_PROMPTS = [
+  "What did you notice since yesterday?",
+  "What’s still nagging at you from earlier?",
+  "Overheard anything worth keeping?",
+  "What keeps pulling your attention back?",
+  "Anything you can’t quite explain yet?",
+];
+
+const VISITS_KEY = "nocturne.visits.v1";
+
+export function visitPrompt(): string {
+  if (typeof window === "undefined") return FIRST_INVITATION;
+  try {
+    const visits = Number(window.localStorage.getItem(VISITS_KEY) ?? "0");
+    window.localStorage.setItem(VISITS_KEY, String(visits + 1));
+    if (visits === 0) return FIRST_INVITATION;
+    return RETURN_PROMPTS[(visits - 1) % RETURN_PROMPTS.length];
+  } catch {
+    return FIRST_INVITATION;
+  }
 }

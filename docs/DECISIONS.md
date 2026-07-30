@@ -85,4 +85,21 @@ screen to Elliot's `POST /api/dream` contract and retire the placeholder `/api/w
 merge is additive not competitive. Keeping both people's work (mechanism-match is the sharpest idea
 in either; the buried-vs-stated frame is the proven "oh") beats picking a winner.
 
+## 011 — App wired to the dream contract; entry-UX copy applied
+**When:** 18:15 · **Who:** Elliot
+**Decision:** The scaffold now runs against `POST /api/dream` (route + `lib/dream.ts` copied
+from Elliot's lane per `docs/API.md`); the placeholder `/api/weekly-read` and `lib/prompt.ts`
+are deleted. `lib/fragments.ts` stores the full archive shape (`user` + `notes[{id,text,at}]`,
+seeded from `data/archive.seed.json`; live notes get `live-N`). Capture screen carries
+`docs/ENTRY-UX.md` verbatim-ish: invitation + rotating re-entry prompts, worked example below
+the box, "Just say it out loud" mic, transcript hidden while listening. Read is now the wake
+screen (reading / collisions / eureka-or-calm-null, extensions rendered as "the dream's guess").
+`globals.css` flipped to DESIGN.md's dark-first tokens (+`--surface-raised`, `--glow`,
+`--spring`); PWA colours match the dark canvas. Verified: `npm run build` clean, live
+`/api/dream` call returns schema-valid dream on the seed archive.
+**Why:** Decision 010's named next step. The old brain and the new one disagreed on the wire
+shape, so keeping both was a merge trap. What it costs: the localStorage key changed
+(`nocturne.archive.v1`), so anything captured under the old key is orphaned — nothing real
+exists there yet. Design folk restyle from here; the API contract and copy reasoning stay put.
+
 <!-- next entry below -->

@@ -46,11 +46,22 @@ function messageFor(code: string): string {
   }
 }
 
-export function MicButton({ onTranscript }: { onTranscript: (text: string) => void }) {
-  const [recording, setRecording] = useState(false);
+export function MicButton({
+  onTranscript,
+  onRecordingChange,
+}: {
+  onTranscript: (text: string) => void;
+  onRecordingChange?: (recording: boolean) => void;
+}) {
+  const [recording, setRecordingState] = useState(false);
   const [supported, setSupported] = useState(true);
   const [notice, setNotice] = useState("");
   const recRef = useRef<SpeechRecognitionLike | null>(null);
+
+  function setRecording(value: boolean) {
+    setRecordingState(value);
+    onRecordingChange?.(value);
+  }
 
   useEffect(() => {
     setSupported(getRecognitionCtor() !== null);
@@ -123,6 +134,13 @@ export function MicButton({ onTranscript }: { onTranscript: (text: string) => vo
 
   return (
     <div className="flex flex-col gap-[var(--s-2)]">
+      {/* ENTRY-UX.md: while listening, calm words and no live transcript — a mirror
+          raises self-consciousness. Colour + label + pulse, never colour alone. */}
+      {recording && (
+        <p className="text-[16px] text-muted text-center italic" role="status">
+          Listening… take your time. Ramble.
+        </p>
+      )}
       <button
         type="button"
         onClick={toggle}
@@ -140,7 +158,7 @@ export function MicButton({ onTranscript }: { onTranscript: (text: string) => vo
         }
       >
         <span aria-hidden>{recording ? "◼" : "●"}</span>
-        {recording ? "Listening — tap to stop" : "Hold a thought — tap to speak"}
+        {recording ? "Done" : "Just say it out loud"}
       </button>
       {notice && (
         <p className="text-[13px] text-danger text-center" role="status">

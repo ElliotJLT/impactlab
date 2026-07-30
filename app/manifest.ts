@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "The thread you keep circling.",
     start_url: "/",
     display: "standalone",
-    background_color: "#F7F8FA",
-    theme_color: "#16776F",
+    background_color: "#0A0B0D",
+    theme_color: "#0A0B0D",
     icons: [
       { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
