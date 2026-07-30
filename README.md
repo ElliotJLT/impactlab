@@ -2,7 +2,9 @@
 
 Team build for the **Claude Communities Impact Lab** (London, 30 July 2026). Four people, one repo, ~3 hours, demo at 19:00.
 
-Full brief: [`docs/BRIEF.md`](docs/BRIEF.md) · What we're building: [`docs/SCOPE.md`](docs/SCOPE.md) · Why we chose it: [`docs/DECISIONS.md`](docs/DECISIONS.md)
+Full brief: [`docs/BRIEF.md`](docs/BRIEF.md) · What we're building: [`docs/SCOPE.md`](docs/SCOPE.md) · Design system: [`docs/DESIGN.md`](docs/DESIGN.md) · Why we chose it: [`docs/DECISIONS.md`](docs/DECISIONS.md)
+
+**Building any UI? Read [`docs/DESIGN.md`](docs/DESIGN.md) first.** Mobile-first PWA, 390×844, shared tokens. It's a phone app.
 
 ---
 

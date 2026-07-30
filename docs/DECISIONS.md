@@ -32,4 +32,14 @@ The "why" is the part that earns its keep. In two hours someone will want to cha
 **Decision:** Claude resolves who it's working for via `git var GIT_AUTHOR_IDENT` rather than asking at session start. Roster and branch prefixes live in `CLAUDE.md`.
 **Why:** Asking is friction repeated every session, and there's nowhere durable to store the answer. Note `git config user.name` was empty on a clean machine — git falls back to the macOS account name, so `git var` is the command that actually resolves. Hence the one-time `git config` step in the README: it fixes GitHub attribution too.
 
+## 004 — Mobile-first PWA with a fixed design system
+**When:** 16:45 · **Who:** Elliot
+**Decision:** Every screen is designed for a phone (390×844) as a rule, not a responsive afterthought. Tokens, type scale, components and the PWA checklist live in `docs/DESIGN.md`, and `CLAUDE.md` makes reading it mandatory before any UI work. One accent colour; fonts fixed to Geist Sans/Mono plus Instrument Serif.
+**Why:** The use case is a 3-minute session, one hand, on a platform, so desktop-first would design for the wrong body. Four agents with no shared tokens also produce four visual languages, which reads as a broken product in a 3-minute demo. What it costs us: no desktop-specific layout, and nobody gets to pick their own palette.
+
+## 005 — No service worker
+**When:** 16:45 · **Who:** Elliot
+**Decision:** PWA installability via manifest, icons and HTTPS only. No offline support.
+**Why:** Service workers are the classic PWA time-sink and buy nothing in a live demo on venue wifi. The trade: the app won't work offline, which no judge will test.
+
 <!-- next entry below -->

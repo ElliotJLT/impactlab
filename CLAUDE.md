@@ -37,6 +37,29 @@ Consequences, in priority order:
 - **Log real decisions** in `docs/DECISIONS.md` — a one-liner, append-only. Anything the next person would otherwise have to reverse-engineer.
 - **If a task feels like it needs three files and an abstraction, say so** before building it. That's usually a sign it should be cut or faked.
 
+## Design rules — mobile-first PWA, non-negotiable
+
+**Read [`docs/DESIGN.md`](docs/DESIGN.md) before writing any UI.** It holds the tokens, type scale, components and PWA checklist. Use the tokens; don't invent values.
+
+The rule: **this is a phone app.** Someone standing on a train platform, one hand, 3 minutes, daylight. Build at **390 × 844** and treat desktop as a widened phone layout, never the reverse.
+
+The eight things that bite you on stage if you skip them:
+
+1. Touch targets **≥ 44px** (48px preferred)
+2. Primary action in the **bottom third**, for thumb reach
+3. **`100dvh`, never `100vh`** — mobile Safari's URL bar clips `100vh`
+4. Inputs at **`font-size: 16px` minimum** — iOS auto-zooms below that and it looks broken
+5. **Safe areas** via `env(safe-area-inset-*)`, and the viewport meta needs `viewport-fit=cover` or those values silently return 0
+6. **No hover-only affordances.** Guard hover in `@media (hover: hover)`, style `:active`
+7. Honour **`prefers-reduced-motion`**
+8. **One primary action per screen**
+
+Colour, type and spacing come from the CSS custom properties in `DESIGN.md`. **No raw hex in components, no arbitrary Tailwind values.** Every palette pair is verified WCAG AA, so if you change a colour, recompute the contrast with the one-liner in `DESIGN.md` rather than eyeballing it.
+
+Fonts are settled: Geist Sans, Geist Mono, Instrument Serif. **Banned:** Inter, Roboto, Arial, bare `system-ui`, purple gradients, cream background with a serif. Those read as generic AI output and the judges will have seen them all afternoon.
+
+Service workers and offline support are **out of scope**. Installability only needs the manifest.
+
 ## Who's on the team
 
 | Person | Branch prefix |
