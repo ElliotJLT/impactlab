@@ -11,6 +11,10 @@ import {
 
 const run = promisify(execFile);
 
+// The Claude call takes ~20-40s; the default serverless timeout (~10s on Vercel Hobby) would
+// kill it ONLY on the deployed URL, not localhost. Raise it. Harmless on Railway/Node.
+export const maxDuration = 60;
+
 // Demo model decided on evidence — Sonnet 5's count contrast reads better on screen than
 // Opus's more literal tie (see docs/master-prompt-DRAFT-samantha.md). Opus is the fallback.
 const MODEL = "claude-sonnet-5";
