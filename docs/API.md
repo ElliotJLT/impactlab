@@ -26,6 +26,20 @@ POST /api/dream
 
 Collisions and the eureka each carry an `extension` (string or `null`): the dream's one-step guess at where the thought was going. **Render it visually distinct from the user's own quoted words** — muted/italic with a label like "the dream's guess" — the product's honesty depends on the user always seeing which words are theirs and which are the machine wondering.
 
+## Fastest path — three commands
+
+The route is written and matches this contract. Don't hand-roll it:
+
+```bash
+npm i @anthropic-ai/sdk
+cp prompts/dream.generated.ts lib/dream.ts
+cp prompts/route.reference.ts  app/api/dream/route.ts
+```
+
+It already has `maxDuration = 60`, `effort: "medium"`, `cycle_at`, and a fallback to `data/dream.fallback.json` on any error — so a wifi drop returns a good dream instead of an error screen. Check `x-dream-fallback: 1` on the response if you want to know it fired.
+
+`prompts/dream.md` stays the source of truth for the prompt. After editing it, run `node prompts/build.mjs` and re-copy `dream.generated.ts`.
+
 ## Route implementation notes
 
 - `@anthropic-ai/sdk`, `claude-opus-4-8`, `thinking: { type: "adaptive" }`, `max_tokens: 4000`, non-streaming, `output_config.format` = the json_schema in `prompts/dream.md`.
