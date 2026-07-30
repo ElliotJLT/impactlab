@@ -37,6 +37,28 @@ Consequences, in priority order:
 - **Log real decisions** in `docs/DECISIONS.md` — a one-liner, append-only. Anything the next person would otherwise have to reverse-engineer.
 - **If a task feels like it needs three files and an abstraction, say so** before building it. That's usually a sign it should be cut or faked.
 
+## Who's on the team
+
+| Person | Branch prefix |
+|---|---|
+| Zan S. | `zan/` |
+| Andrei I. | `andrei/` |
+| Elliot L. | `elliot/` |
+| Samantha N. | `samantha/` |
+
+**Don't ask the user who they are.** Resolve it yourself:
+
+```bash
+git var GIT_AUTHOR_IDENT | sed 's/ <.*//'
+```
+
+Use `git var`, not `git config user.name` — the latter returns empty unless the person ran the setup step in the README, whereas `git var` falls back to the OS account name and always resolves. Use the result to pick the branch prefix and to check the ownership table below before editing a file.
+
+Two edge cases:
+
+- **Name isn't in the table above** → roster is stale. Say so, don't guess.
+- **Email looks machine-generated** (`name@Someones-MacBook-Air.local`) → they skipped the README setup step, so their commits won't attribute to GitHub. Worth one mention, then move on. Don't let it block the build.
+
 ## File ownership
 
 One owner per area. Cross-area change → tell the owner, or do it in a separate commit so the conflict is easy to see.
@@ -44,9 +66,12 @@ One owner per area. Cross-area change → tell the owner, or do it in a separate
 | Area | Owner | Notes |
 |---|---|---|
 | `docs/` | anyone | Append, don't rewrite others' entries |
-| _TBD once stack is picked_ | | |
+| _TBD once stack is picked_ | Zan | |
+| _TBD_ | Andrei | |
+| _TBD_ | Elliot | |
+| _TBD_ | Samantha | |
 
-Fill this in the moment the first code lands. An empty ownership table with four people committing is how you get merge hell at 18:30.
+Fill the areas in the moment the first code lands. An empty ownership table with four people committing is how you get merge hell at 18:30.
 
 ## Stack
 

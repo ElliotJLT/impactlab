@@ -12,7 +12,13 @@ Full brief: [`docs/BRIEF.md`](docs/BRIEF.md) · What we're building: [`docs/SCOP
 git clone https://github.com/ElliotJLT/impactlab.git
 cd impactlab
 cp .env.example .env.local   # paste the Anthropic credit key from the event
+
+# One-time: make your commits attribute to you (10 seconds, do it now)
+git config user.name  "Your Name"
+git config user.email "your@github-email.com"   # must match your GitHub account
 ```
+
+Skip the `git config` step and git silently invents an identity from your Mac's account name (`elliot@Elliots-MacBook-Air.local`) — commits still work, but they won't link to your GitHub profile and Claude can't tell who it's working for.
 
 Then open Claude Code in this directory. It reads [`CLAUDE.md`](CLAUDE.md) automatically — that's your briefing, the ground rules, and who owns which files. Read it before your first prompt.
 
@@ -22,25 +28,31 @@ Then open Claude Code in this directory. It reads [`CLAUDE.md`](CLAUDE.md) autom
 
 | | |
 |---|---|
-| **Branch** | `yourname/what-youre-doing` off `main` |
+| **Branch** | `yourname/what-youre-doing` off `main` — e.g. `andrei/match-api` |
 | **Merge** | Straight to `main` via PR, no review gate. Ship it. |
 | **Before every push** | `git pull --rebase origin main` |
 | **Never** | `git push --force` to `main` |
 | **Commits** | Small and often. A broken `main` blocks the other three. |
 | **Blocked >10 min** | Say so out loud. Don't debug alone. |
 
-## Roles
+## Who's doing what
 
-Fill this in at kick-off — ambiguity here is what kills hackathon teams.
+Team: **Zan S., Andrei I., Elliot L., Samantha N.**
+
+Assign the two roles at kick-off. Ambiguity here is what kills hackathon teams — everyone builds, but these two jobs need a name against them.
 
 | Role | Who | Owns |
 |---|---|---|
-| Demo driver | _TBD_ | The 3-minute demo script and the laptop it runs on |
-| Integrator | _TBD_ | Merges to `main`, unblocks conflicts, calls the cut line at 18:00 |
-| Build | _TBD_ | See the ownership table in `CLAUDE.md` |
-| Build | _TBD_ | |
+| **Demo driver** | _TBD_ | The 3-minute script, and the laptop it runs on. Writes `docs/SCOPE.md` demo table. |
+| **Integrator** | _TBD_ | Merges to `main`, resolves conflicts, calls the cut line at 18:00 |
 
-Four people, four roles — demo driver and integrator also build. Doubling up is fine; leaving them unassigned is not.
+Everyone also owns an area of the codebase — table in [`CLAUDE.md`](CLAUDE.md#file-ownership). Doubling up on roles is fine; leaving them unassigned is not.
+
+You don't need to tell Claude who you are — it reads your git identity. Confirm yours is set (see the setup block above):
+
+```bash
+git config user.name   # should return your name. Empty means you skipped the setup step.
+```
 
 ## Timeline
 

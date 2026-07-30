@@ -27,4 +27,9 @@ The "why" is the part that earns its keep. In two hours someone will want to cha
 **Decision:** Short-lived branches merged straight to `main`. No approval required. `git pull --rebase` before every push.
 **Why:** PR review latency costs more than it saves over three hours. The trade is that `main` can break — mitigated by small, frequent commits and one named integrator.
 
+## 003 — Identity is detected, not asked
+**When:** 16:25 · **Who:** Elliot
+**Decision:** Claude resolves who it's working for via `git var GIT_AUTHOR_IDENT` rather than asking at session start. Roster and branch prefixes live in `CLAUDE.md`.
+**Why:** Asking is friction repeated every session, and there's nowhere durable to store the answer. Note `git config user.name` was empty on a clean machine — git falls back to the macOS account name, so `git var` is the command that actually resolves. Hence the one-time `git config` step in the README: it fixes GitHub attribution too.
+
 <!-- next entry below -->
