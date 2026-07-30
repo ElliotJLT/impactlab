@@ -11,8 +11,10 @@ POST /api/dream
 **Request body** — the whole archive, verbatim shape of `data/archive.seed.json` (user block + notes, plus any note added live):
 
 ```json
-{ "user": { "...": "..." }, "notes": [ { "id": "n01", "text": "...", "at": "ISO-8601" } ] }
+{ "cycle_at": "ISO-8601 now", "user": { "...": "..." }, "notes": [ { "id": "n01", "text": "...", "at": "ISO-8601" } ] }
 ```
+
+`cycle_at` = `new Date().toISOString()` at call time. It is load-bearing: eurekas only fire when a note within 24h of `cycle_at` completes an older thread, which is what makes the live stage note the trigger.
 
 **Response** — the dream JSON, exact schema in [`prompts/dream.md`](../prompts/dream.md):
 

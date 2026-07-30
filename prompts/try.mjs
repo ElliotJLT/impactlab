@@ -2,7 +2,11 @@
 // Prompt-iteration harness. NOT app code — the app uses @anthropic-ai/sdk per
 // CLAUDE.md; this is a zero-dependency script so the prompt/seed workstream can
 // run dream cycles before the app scaffold exists (and without touching the
-// scaffolder's package.json). Usage:  node prompts/try.mjs
+// scaffolder's package.json).
+// Usage:
+//   node prompts/try.mjs                  seed archive only (expect eureka: null)
+//   node prompts/try.mjs --stage          seed + rehearsed _stage_note (expect eureka)
+//   node prompts/try.mjs "any note text"  seed + an ad-hoc live note
 import { readFileSync, existsSync } from "node:fs";
 
 const root = new URL("..", import.meta.url).pathname;
@@ -22,6 +26,13 @@ const system = md.match(/```text\n([\s\S]*?)```/)[1];
 const schema = JSON.parse(md.match(/```json\n([\s\S]*?)```/)[1]);
 const archive = JSON.parse(readFileSync(root + "data/archive.seed.json", "utf8"));
 
+const arg = process.argv[2];
+if (arg) {
+  const text = arg === "--stage" ? archive._stage_note : arg;
+  archive.notes.push({ id: "live-1", text, at: new Date().toISOString() });
+  console.error(`[live note added: "${text.slice(0, 60)}..."]`);
+}
+
 const filled = system
   .replaceAll("{name}", archive.user.name)
   .replaceAll("{practice}", archive.user.practice)
@@ -36,9 +47,9 @@ const res = await fetch("https://api.anthropic.com/v1/messages", {
     model: "claude-opus-4-8",
     max_tokens: 4000,
     thinking: { type: "adaptive" },
-    output_config: { format: { type: "json_schema", schema } },
+    output_config: { effort: "medium", format: { type: "json_schema", schema } },
     system: filled,
-    messages: [{ role: "user", content: JSON.stringify({ user: archive.user, notes: archive.notes }) }],
+    messages: [{ role: "user", content: JSON.stringify({ cycle_at: new Date().toISOString(), user: archive.user, notes: archive.notes }) }],
   }),
 });
 

@@ -42,6 +42,8 @@ Where they diverge, report it plainly. Divergence is information, never scolding
 Output rules:
 - Quote fragments verbatim. Trim filler with ellipses. Never paraphrase
   inside quotation marks.
+- Quote with single quotation marks ('like this'), never double — a raw
+  double quotation mark inside a JSON string value breaks the output.
 - At most 3 collisions. Omit weak ones entirely rather than hedging.
 - One open question per collision. No advice, no "you should".
 - A collision may carry an extension: one or two sentences dreaming the
@@ -50,9 +52,11 @@ Output rules:
   Nothing imported, nothing finished. It is a guess at where the thought
   was going, offered to be discarded. If the collision doesn't want
   extending, set extension to null rather than forcing it.
-- Declare a eureka only when a revealed theme recurs across 3+ notes AND
-  a new note completes it. Most cycles have none. When it fires, say
-  why now, in one sentence.
+- Declare a eureka only when BOTH hold: a revealed theme recurs across 3+
+  earlier notes, AND a note captured within 24 hours of cycle_at completes
+  it. Sleep works on the day's residue: no fresh note, no eureka, however
+  ripe the old thread looks. Most cycles have none. When it fires, say why
+  now, in one sentence.
 - If the archive is thin, say so and stop. Never pad.
 ```
 
@@ -125,8 +129,8 @@ Passed as `output_config.format` (`json_schema`) so the wake screen renders fiel
 
 ## API call shape
 
-- `claude-opus-4-8`, `thinking: { type: "adaptive" }`, `max_tokens: 4000`, non-streaming.
-- User message = the archive JSON (user block + all notes, timestamps included).
+- `claude-opus-4-8`, `thinking: { type: "adaptive" }`, `output_config.effort: "medium"`, `max_tokens: 4000`, non-streaming. (Effort medium measured ~38s on 12 notes vs ~52s at the default high, with no visible quality loss — high pushed the route timeout.)
+- User message = `{ "cycle_at": ISO-now, "user": {...}, "notes": [...] }`. `cycle_at` is load-bearing: the eureka rule compares note timestamps against it.
 - The 3-collision / rare-eureka scarcity lives in the prompt, not post-processing.
 - Latency is covered by the dream animation on the client, not a spinner. This is the agreed exception to the "stream everything" rule in `CLAUDE.md` — structured output doesn't stream usefully, and the animation is the product's identity moment.
 

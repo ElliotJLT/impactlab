@@ -3,29 +3,68 @@
     "stated": {
       "note_ids": [
         "n01",
-        "n02"
+        "n02",
+        "n04",
+        "n05",
+        "n07",
+        "n10",
+        "n11",
+        "live-1"
       ]
     },
     "revealed": {
-      "theme": "who a space actually belongs to — the difference between controlling a room and knowing it in your hands",
+      "theme": "Sam keeps returning to the workshop: the hand that remembers what the head files and loses, a life proven by the marks it leaves, not by the labels put on it.",
       "note_ids": [
-        "n02",
-        "n03"
+        "n03",
+        "n06",
+        "n09",
+        "n12"
       ]
     }
   },
   "collisions": [
     {
       "note_ids": [
-        "n02",
-        "n03"
+        "n07",
+        "n10",
+        "live-1"
       ],
-      "span_days": 8,
-      "connection": "Both notes are about who owns a space and how they prove it. The landlord's knock is 'a courtesy to himself' — his claim on the flat is legal, external, a system that lets him already be inside. Your dad 'never labelled anything... but knew where everything was' — his claim on the workshop was pure intimacy, no system at all. The renting notes assume the paperwork decides who a room belongs to; the workshop note quietly says knowledge decides. Same itch: possession by system versus possession by hands.",
-      "question": "When you're the one paying rent, are you the landlord of that flat or the labeller who can't find anything?",
-      "extension": "The flat you rent, you label every shelf and still lose the keys; the workshop you never paid for, your dad's hands knew blind. Maybe the mould is 'characterful' because it's the one thing in the flat that actually lives there."
+      "span_days": 17,
+      "connection": "All three cast the tenant as the suspect in their own life. 'protected from me' names it, 'proving negatives about a hallway' performs it, and live-1 makes 'evidence that I live there' the actual crime. Same itch: the system that houses you treats your presence as the threat.",
+      "question": "If the flat's ideal tenant is one who leaves no trace at all, what exactly are you paying to do there?",
+      "extension": "An hour of photographing scuffs you didn't make, so you can prove you weren't there in the one place you actually live."
+    },
+    {
+      "note_ids": [
+        "n03",
+        "n08"
+      ],
+      "span_days": 14,
+      "connection": "Dad 'never labelled anything... but knew where everything was'; the flatmate 'labelled her fridge shelf day one'. You landed the mechanism yourself in n08: 'we label the things we don't trust each other with'. The workshop ran on trust in the hands; the shared flat runs on labels because trust is gone.",
+      "question": "Is a label always a small confession that the trust it replaces has already failed?",
+      "extension": "Dad's whole workshop was one long unlabelled sentence only his hands could read; your fridge shelf needs a sticker because nobody in the flat can read anybody."
+    },
+    {
+      "note_ids": [
+        "n01",
+        "n04"
+      ],
+      "span_days": 16,
+      "connection": "'characterful' about the mould and the wide-angle listing photos are the same move: language and lens conscripted to sell you a flat that doesn't exist. 'you're viewing the lens really' — and you're smelling the euphemism before the door opens.",
+      "question": "Who is the fiction actually for — the buyer of the flat, or the person who has to keep saying the words?",
+      "extension": null
     }
   ],
-  "eureka": null
+  "eureka": {
+    "note_ids": [
+      "n03",
+      "n06",
+      "n09",
+      "n12",
+      "live-1"
+    ],
+    "why_now": "live-1 arrived today and finally names the inverse of the workshop thread — a home where 'evidence that I live there is a chargeable offence' — completing months of notes about a life measured in the marks the hands leave behind.",
+    "question": "If the workshop was nothing but a lifetime of unlabelled marks proving a man lived by hand, what does it do to you to rent a place where leaving any mark at all is damage?",
+    "extension": "Dad's pencil, sharpened with a knife, left shavings everywhere and a knowledge nobody could bill him for; you stand in the hardware shop breathing sawdust for ten minutes because it's the only room left where being present isn't a deduction from your deposit."
+  }
 }
-
