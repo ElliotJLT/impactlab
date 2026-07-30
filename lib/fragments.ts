@@ -16,7 +16,7 @@ export type ArchiveUser = {
 
 export type Archive = { user: ArchiveUser; notes: Note[] };
 
-const STORAGE_KEY = "nocturne.archive.v1";
+const STORAGE_KEY = "muse.archive.v1";
 
 const SEED: Archive = { user: seed.user, notes: seed.notes };
 
@@ -78,7 +78,7 @@ const RETURN_PROMPTS = [
   "Anything you can’t quite explain yet?",
 ];
 
-const VISITS_KEY = "nocturne.visits.v1";
+const VISITS_KEY = "muse.visits.v1";
 
 export function visitPrompt(): string {
   if (typeof window === "undefined") return FIRST_INVITATION;

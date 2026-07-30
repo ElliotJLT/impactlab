@@ -102,4 +102,17 @@ shape, so keeping both was a merge trap. What it costs: the localStorage key cha
 (`nocturne.archive.v1`), so anything captured under the old key is orphaned — nothing real
 exists there yet. Design folk restyle from here; the API contract and copy reasoning stay put.
 
+## 012 — Named Muse; app CSS on the warm bloom tokens; deploying to Vercel
+**When:** 18:25 · **Who:** Elliot
+**Decision:** The app is **Muse** (was working title Nocturne) — updated in `layout.tsx`,
+`manifest.ts`, the capture header, and the localStorage keys (`muse.archive.v1`). App
+`globals.css` now implements the warm two-theme + bloom tokens from PR #1's `DESIGN.md`
+(the follow-up that PR asked for), including the drifting `body::before` bloom with its
+reduced-motion freeze; PWA colours match the new `#0E0B09` canvas. Deploying to **Vercel**
+per `docs/DEPLOY.md` (Railway incident) — and the live route is now `/api/dream`, so
+DEPLOY.md's "placeholder brain deploys" caveat no longer applies.
+**Why:** Team rename + designer's palette, applied app-side so the doc and the running app
+match before the demo. Note for PR #1 on merge: its `DECISIONS.md` entry is also numbered
+011 — renumber to 013 when rebasing, don't collapse into this one.
+
 <!-- next entry below -->

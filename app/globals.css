@@ -1,27 +1,37 @@
 @import "tailwindcss";
 
-/* ── Design tokens — from docs/DESIGN.md verbatim. No raw hex in components. ──
-   Dark-first: the night theme is the product's identity; light is the override. */
+/* ── Design tokens — from docs/DESIGN.md (PR #1, warm two-theme + bloom) verbatim.
+   No raw hex in components. Dark is the no-preference default; light overrides. ── */
 :root {
-  --bg:            #0A0B0D;
-  --surface:       #141519;
-  --surface-raised:#1E2027;
-  --border:        #282A31;
+  /* Surface — DARK: warm near-black. */
+  --bg:            #0E0B09;
+  --surface:       #1C1713;
+  --surface-raised:#241D17;
+  --border:        #332A22;
 
-  --text:          #F2F4F7;
-  --text-muted:    #9AA5B4;
+  /* Text — warm cream, never a blue-white */
+  --text:          #F6ECE1;
+  --text-muted:    #BCAD9A;
 
-  --accent:        #3FBFB2;
-  --accent-on:     #06201E;
+  /* Accent — one only. "Ember" — the colour the bloom is built from. */
+  --accent:        #F0803F;
+  --accent-on:     #2A1305;   /* dark label on the bright accent — white fails AA here */
 
-  --danger:        #F0857E;
+  --danger:        #FF8A80;
+
+  /* Signature gradient — warm mesh bloom at the top, fading out by ~56% so the
+     solid base carries the text zone. Lives on body::before, never under text. */
+  --bloom:
+    radial-gradient(120% 70% at 50% -10%, rgb(255 140 60 / 0.72) 0%, rgb(255 140 60 / 0) 56%),
+    radial-gradient(95% 60% at 66% 18%,   rgb(230 50 35 / 0.65)  0%, rgb(230 50 35 / 0) 58%),
+    radial-gradient(90% 58% at 28% 26%,   rgb(255 165 80 / 0.40) 0%, rgb(255 165 80 / 0) 54%);
 
   --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
   --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
 
   --r-sm: 8px; --r-md: 12px; --r-lg: 20px; --r-full: 999px;
 
-  /* Elevation — flat by default; the only lift is the focus glow. */
+  /* Elevation — flat by default; the only lift is the warm focus glow. */
   --glow: 0 0 0 1px var(--accent), 0 0 24px -6px var(--accent);
 
   /* Motion — physics, not easing. One curve, used sparingly. */
@@ -33,16 +43,21 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg:            #F7F8FA;
-    --surface:       #FFFFFF;
-    --surface-raised:#FFFFFF;
-    --border:        #E2E6EC;
-    --text:          #12151C;
-    --text-muted:    #5A6472;
-    --accent:        #16776F;
+    /* LIGHT: warm greige — paper and stone, not cold blue-white. */
+    --bg:            #F6F1EA;
+    --surface:       #FEFCF8;
+    --surface-raised:#FEFCF8;
+    --border:        #E7DFD3;
+    --text:          #221C15;
+    --text-muted:    #6A6055;
+    --accent:        #A84A0E;   /* burnt terracotta — the same ember, in daylight */
     --accent-on:     #FFFFFF;
-    --danger:        #C2413B;
+    --danger:        #C0392E;
     --glow:          0 0 0 1px var(--accent), 0 4px 16px -8px var(--accent);
+    --bloom:
+      radial-gradient(120% 70% at 50% -10%, rgb(255 150 70 / 0.48) 0%, rgb(255 150 70 / 0) 56%),
+      radial-gradient(95% 60% at 66% 18%,   rgb(240 80 55 / 0.34)  0%, rgb(240 80 55 / 0) 58%),
+      radial-gradient(90% 58% at 28% 26%,   rgb(255 185 120 / 0.36) 0%, rgb(255 185 120 / 0) 54%);
   }
 }
 
@@ -52,11 +67,11 @@
   --color-surface:        var(--surface);
   --color-surface-raised: var(--surface-raised);
   --color-border:         var(--border);
-  --color-text:      var(--text);
-  --color-muted:     var(--text-muted);
-  --color-accent:    var(--accent);
-  --color-accent-on: var(--accent-on);
-  --color-danger:    var(--danger);
+  --color-text:           var(--text);
+  --color-muted:          var(--text-muted);
+  --color-accent:         var(--accent);
+  --color-accent-on:      var(--accent-on);
+  --color-danger:         var(--danger);
 
   --font-sans:  var(--font-geist-sans);
   --font-mono:  var(--font-geist-mono);
@@ -65,23 +80,44 @@
 
 * { -webkit-tap-highlight-color: transparent; }
 
-html { color-scheme: dark light; }
-
-/* The dream cycle — the one sanctioned ambient motion (DESIGN.md). Runs while the
-   API thinks; the reduced-motion block below collapses it to a still state. */
-@keyframes dream-drift {
-  0%, 100% { opacity: 0.25; transform: translateY(0) scale(1); }
-  50%      { opacity: 1;    transform: translateY(-6px) scale(1.15); }
-}
+html { color-scheme: dark light; }   /* dark listed first = the no-preference default */
 
 body {
-  background: var(--bg);
+  background: var(--bg);   /* solid base carries the text zone */
   color: var(--text);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overscroll-behavior-y: none;   /* kills pull-to-refresh mid-dictation */
+}
+
+/* The signature bloom: fixed layer behind everything, drifting very slowly.
+   Kept in the TOP region (overhang + small transform) so the lower text zone
+   stays --bg. Logged exception to "don't animate what the user didn't touch". */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -18% -18% auto -18%;   /* overhang so drift never reveals an edge */
+  height: 96svh;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--bloom);
+  transform-origin: 50% 0%;
+  animation: bloom-drift 36s ease-in-out infinite alternate;
+  will-change: transform, filter;
+}
+@keyframes bloom-drift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1.05); filter: hue-rotate(-6deg) saturate(1);    }
+  50%  { transform: translate3d( 2%,  1%, 0) scale(1.10); filter: hue-rotate( 5deg) saturate(1.08); }
+  100% { transform: translate3d(-1%,  0%, 0) scale(1.07); filter: hue-rotate(-3deg) saturate(1.02); }
+}
+
+/* The dream cycle — the other sanctioned ambient motion (DESIGN.md). Runs while
+   the API thinks; the reduced-motion block below collapses it to a still state. */
+@keyframes dream-drift {
+  0%, 100% { opacity: 0.25; transform: translateY(0) scale(1); }
+  50%      { opacity: 1;    transform: translateY(-6px) scale(1.15); }
 }
 
 /* Safe areas — apply to anything pinned to an edge */
@@ -93,4 +129,5 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  body::before { animation: none; transform: scale(1.05); }   /* bloom stays, just holds still */
 }

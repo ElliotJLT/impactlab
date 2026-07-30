@@ -36,7 +36,7 @@ export default function CapturePage() {
   return (
     <main className="flex flex-col min-h-[100dvh] w-full px-[var(--s-4)] pin-top">
       <header className="w-full max-w-[560px] mx-auto pt-[var(--s-5)] pb-[var(--s-4)] text-center">
-        <p className="font-[family-name:var(--font-serif)] text-[19px] text-muted">Nocturne</p>
+        <p className="font-[family-name:var(--font-serif)] text-[19px] text-muted">Muse</p>
         <h1 className="font-[family-name:var(--font-serif)] font-normal text-[clamp(32px,8vw,44px)] leading-[1.15] mt-[var(--s-3)]">
           {prompt}
         </h1>

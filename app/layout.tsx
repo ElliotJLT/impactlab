@@ -20,9 +20,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Nocturne",
+  title: "Muse",
   description: "The thread you keep circling.",
-  appleWebApp: { capable: true, statusBarStyle: "default", title: "Nocturne" },
+  appleWebApp: { capable: true, statusBarStyle: "default", title: "Muse" },
 };
 
 // viewport-fit=cover is required or env(safe-area-inset-*) returns 0 — DESIGN.md rule 5.
@@ -31,7 +31,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   // Match the dark canvas so the status bar blends into the night theme (DESIGN.md).
-  themeColor: "#0A0B0D",
+  themeColor: "#0E0B09",
 };
 
 export default function RootLayout({
