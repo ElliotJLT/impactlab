@@ -16,7 +16,10 @@ export type ArchiveUser = {
 
 export type Archive = { user: ArchiveUser; notes: Note[] };
 
-const STORAGE_KEY = "muse.archive.v1";
+// Bump this whenever data/archive.seed.json changes, or a browser that already
+// opened the app keeps serving the previous seed from localStorage — which on
+// stage means demoing the old notes.
+const STORAGE_KEY = "muse.archive.v2";
 
 const SEED: Archive = { user: seed.user, notes: seed.notes };
 
