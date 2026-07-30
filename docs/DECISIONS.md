@@ -116,3 +116,21 @@ match before the demo. Note for PR #1 on merge: its `DECISIONS.md` entry is also
 011 — renumber to 013 when rebasing, don't collapse into this one.
 
 <!-- next entry below -->
+
+## 013 — Seed archive redesigned for a repeatable demo
+**When:** 18:55 · **Who:** Elliot
+**Decision:** Rewrote `data/archive.seed.json`. The buried thread is now concrete and
+nameable — Sam's dad and the rented lock-up workshop (n02, n05, n07, n09, n10, each naming
+dad or the workshop outright) against the stated renting hour (n01, n03, n04, n06, n08, n11,
+n12). The two threads share no vocabulary, so a collision can only be a mechanism match.
+Cut the wide-angle-listing-photos note (it was the hub of a "the market lies" cluster and
+produced 5d and 10d collisions) and the "smell hits before the door's open" clause (it
+cheap-matched the sawdust note on a shared sensory hook). Dropped `dormant_project` —
+it named the workshop in the user block, handing the model the reveal. Regenerated
+`data/dream.fallback.json` from a verified run.
+**Why:** The output was too random to rehearse against: the revealed theme was worded
+differently every cycle and collisions included weak same-week pairs. Measured over 4 runs
+on the new seed, the revealed thread is identical every time (n02,n05,n07,n09,n10), every
+collision spans 15–38 days, and the eureka fires only with the stage note. What it costs:
+two decent jokes (the wide-angle bit, the mould line) traded for a rehearsable demo, and
+the fallback had to be regenerated because it quoted the old note ids.

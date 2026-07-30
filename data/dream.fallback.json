@@ -3,68 +3,68 @@
     "stated": {
       "note_ids": [
         "n01",
-        "n02",
+        "n03",
         "n04",
-        "n05",
-        "n07",
-        "n10",
+        "n06",
+        "n08",
         "n11",
+        "n12",
         "live-1"
       ]
     },
     "revealed": {
-      "theme": "Sam keeps returning to the workshop: the hand that remembers what the head files and loses, a life proven by the marks it leaves, not by the labels put on it.",
+      "theme": "the marks a life leaves on a room — and who is allowed to leave them. Renting is the stated hour, but the thread that keeps pulling is dad's workshop: the groove, the pencil lines, the space that turned out to be 'only ever a room'.",
       "note_ids": [
-        "n03",
-        "n06",
+        "n02",
+        "n05",
+        "n07",
         "n09",
-        "n12"
+        "n10"
       ]
     }
   },
   "collisions": [
     {
       "note_ids": [
-        "n07",
-        "n10",
-        "live-1"
+        "n08",
+        "n12"
       ],
-      "span_days": 17,
-      "connection": "All three cast the tenant as the suspect in their own life. 'protected from me' names it, 'proving negatives about a hallway' performs it, and live-1 makes 'evidence that I live there' the actual crime. Same itch: the system that houses you treats your presence as the threat.",
-      "question": "If the flat's ideal tenant is one who leaves no trace at all, what exactly are you paying to do there?",
-      "extension": "An hour of photographing scuffs you didn't make, so you can prove you weren't there in the one place you actually live."
+      "span_days": 15,
+      "connection": "Both invert who the suspect is. 'protected from who...they mean protected from me' and 'photographing scuffs I didn't make so I can prove I didn't make them' — in both the tenant is treated as the threat to their own home, defending themselves against an accusation nobody has made yet.",
+      "question": "When did living somewhere start meaning building a legal case that you were ever there at all?",
+      "extension": "An hour of proving negatives about a hallway, then a lifetime of proving you didn't wear the groove into the floor."
     },
     {
       "note_ids": [
-        "n03",
-        "n08"
+        "n02",
+        "n11"
       ],
-      "span_days": 14,
-      "connection": "Dad 'never labelled anything... but knew where everything was'; the flatmate 'labelled her fridge shelf day one'. You landed the mechanism yourself in n08: 'we label the things we don't trust each other with'. The workshop ran on trust in the hands; the shared flat runs on labels because trust is gone.",
-      "question": "Is a label always a small confession that the trust it replaces has already failed?",
-      "extension": "Dad's whole workshop was one long unlabelled sentence only his hands could read; your fridge shelf needs a sticker because nobody in the flat can read anybody."
+      "span_days": 35,
+      "connection": "Both measure a thing by the ceremony it doesn't get. Forty years of dad 'empty by the Monday'; the 'biggest thing I spend money on' leaving as 'a standing order in the dark'. The magnitude and the ritual are wildly mismatched in each.",
+      "question": "What would a rite look like for the two transactions that actually move a life — clearing out and paying to stay?",
+      "extension": "The standing order goes out in the dark the same way the lock-up emptied over a weekend: the big things happen with no one watching and no bell rung."
     },
     {
       "note_ids": [
         "n01",
-        "n04"
+        "n10"
       ],
-      "span_days": 16,
-      "connection": "'characterful' about the mould and the wide-angle listing photos are the same move: language and lens conscripted to sell you a flat that doesn't exist. 'you're viewing the lens really' — and you're smelling the euphemism before the door opens.",
-      "question": "Who is the fiction actually for — the buyer of the flat, or the person who has to keep saying the words?",
-      "extension": null
+      "span_days": 34,
+      "connection": "Both strip the mythology off a space to leave the plain fact. 'characterful just means broken but old' and 'turns out it was only ever a room' — the agent's word and the son's grief doing the same demolition, one cynical, one accidental.",
+      "question": "Is 'characterful' the lie you resent, or the one you wanted someone to tell about dad's lock-up?",
+      "extension": "Someone's rowing machine where the workbench stood — characterful, the agent would call it. Broken but old. The only word they own."
     }
   ],
   "eureka": {
     "note_ids": [
-      "n03",
-      "n06",
-      "n09",
-      "n12",
+      "n02",
+      "n05",
+      "n07",
+      "n10",
       "live-1"
     ],
-    "why_now": "live-1 arrived today and finally names the inverse of the workshop thread — a home where 'evidence that I live there is a chargeable offence' — completing months of notes about a life measured in the marks the hands leave behind.",
-    "question": "If the workshop was nothing but a lifetime of unlabelled marks proving a man lived by hand, what does it do to you to rent a place where leaving any mark at all is damage?",
-    "extension": "Dad's pencil, sharpened with a knife, left shavings everywhere and a knowledge nobody could bill him for; you stand in the hardware shop breathing sawdust for ten minutes because it's the only room left where being present isn't a deduction from your deposit."
+    "why_now": "Today's renewal email — 'evidence that I live there is a chargeable offence' — lands on a month of dad's traces (the pencil lines, the worn groove, the lock-up that's 'only ever a room') and names exactly what renting forbids: the marks that made his space his.",
+    "question": "Dad wore a groove into the bench by leaning thirty years in one spot — what's the tenant's version of that groove, and what does it cost per year?",
+    "extension": "He never measured twice, just marked the wood. A whole year somewhere where the marking itself — the blu-tack, the leaning, the living — is the damage you pay for."
   }
 }

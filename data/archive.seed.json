@@ -1,73 +1,72 @@
 {
-  "_readme": "Seed archive with the eureka arc built in. Two threads: RENTING (stated priority, 7 notes) and a buried one — knowing/marking a space by hand vs owning it by paperwork (n03, n06, n09, n12, plus n08 bridging). The buried thread never announces itself; each note reads as a stray observation. The rehearsed stage note (_stage_note below) completes it: eureka should fire only when that note is added. Verify both halves with: node prompts/try.mjs  (expect eureka null)  and  node prompts/try.mjs --stage  (expect eureka). Voice-note texture is deliberate — do not clean up.",
+  "_readme": "Demo seed, designed for a REPEATABLE stage result. Two threads, deliberately sharing no vocabulary so a collision can only be a mechanism match, never a keyword match. STATED = renting in London (n01, n03, n04, n06, n08, n11, n12). BURIED = his dad and the rented lock-up workshop (n02, n05, n07, n09, n10) — every buried note names dad or the workshop outright, so the revealed theme can only be worded one way. Sam never says the hour is about his dad. The buried notes interleave with the stated ones across six weeks, so the strongest available pairs all cross the two threads and span 19-38 days: n12 x n07 (19d, a mark that proves a body was there - treasured in one room, chargeable in the other), n12 x n02 (38d, forty years cleared by Monday vs proving you left no trace), n03 x n10 (29d, whoever holds the key decides it was only ever a room), n08 x n02 (24d, protected from me vs his life having no standing). Two notes are deliberately inert: n06 is gig admin and n04 is a market gripe with no partner, so the model has realistic filler to file under stated without it generating weak collisions. Design rules learned from tuning: (1) no two stated notes may share an itch, or they pair with each other at short span instead of crossing threads - an earlier wide-angle-listing-photos note was the hub of a 'the market lies' cluster and produced 5d and 10d collisions, so it was cut; (2) no repeated sensory hook across threads - an earlier 'the smell hits before the door's open' in n01 cheap-matched n09's sawdust, so it was cut. Verify BOTH halves: node prompts/try.mjs (expect eureka null - no note within 24h of cycle_at) and node prompts/try.mjs --stage (expect eureka). Voice-note texture is deliberate - do not clean up. No dormant_project field on purpose: naming the workshop in the user block would hand the model the reveal and undercut the demo.",
   "_stage_note": "renewal email from the landlord. no picture hooks, no blu-tack, repainting counts as damage. a whole year somewhere where evidence that I live there is a chargeable offence",
   "user": {
     "name": "Sam",
     "practice": "standup",
     "stated_priority": "an hour about renting in London",
-    "idea_shape": "observations",
-    "dormant_project": "the thing about my dad's workshop"
+    "idea_shape": "observations"
   },
   "notes": [
     {
       "id": "n01",
-      "text": "viewing today, the agent kept saying 'characterful' about the mould. third flat this month where the smell hits before the door's open",
-      "at": "2026-06-18T08:42:00Z"
+      "text": "viewing today, the agent said 'characterful' four times. characterful just means broken but old. it's the only word they own",
+      "at": "2026-06-17T08:42:00Z"
     },
     {
       "id": "n02",
-      "text": "um so, the landlord's 'quick inspection' — he knocked and was already inside by the second knock. like the knock was a courtesy to himself",
-      "at": "2026-06-24T19:15:00Z"
+      "text": "was telling someone about clearing dad's workshop after he died. forty years of him in that lock-up and we had a weekend, because the bloke who owned it wanted it empty by the Monday",
+      "at": "2026-06-19T21:30:00Z"
     },
     {
       "id": "n03",
-      "text": "dad never labelled anything in the workshop but knew where everything was. I label everything and can't find anything. something there about... trusting your hands vs trusting the system, don't know",
-      "at": "2026-07-02T21:30:00Z"
+      "text": "um so, the landlord's 'quick inspection' — he knocked and was already inside by the second knock. like the knock was a courtesy to himself",
+      "at": "2026-06-22T19:15:00Z"
     },
     {
       "id": "n04",
-      "text": "the listing photos are all wide-angle. the photos are of a flat that doesn't exist. you're viewing the lens really",
-      "at": "2026-07-04T13:05:00Z"
+      "text": "eight of us queuing in the rain to see a 'cosy' one-bed. the agent had the only umbrella. something about who stays dry in this market",
+      "at": "2026-06-26T18:20:00Z"
     },
     {
       "id": "n05",
-      "text": "eight of us queuing in the rain to see a 'cosy' one-bed. the agent had the only umbrella. something about who stays dry in this market",
-      "at": "2026-07-07T18:20:00Z"
+      "text": "found one of dad's carpenter pencils in an old jacket. he never measured twice, just marked the wood and cut. the bench was covered in his lines",
+      "at": "2026-06-30T09:12:00Z"
     },
     {
       "id": "n06",
-      "text": "found dad's old pencil in a jacket. he sharpened them with a knife, always. I own a sharpener. can't find it. the knife's in my head somewhere still",
-      "at": "2026-07-10T09:12:00Z"
+      "text": "gig at the Bill Murray thursday, ten minutes. lead on the letting-agent stuff, it's the only bit landing at the moment",
+      "at": "2026-07-04T13:05:00Z"
     },
     {
       "id": "n07",
-      "text": "deposit scheme email says your money is protected. protected from who. it's my money. they mean protected from me",
-      "at": "2026-07-13T11:47:00Z"
+      "text": "the workbench had a groove worn into it where he leaned. thirty years of leaning in the same spot. you could see exactly where he'd stood",
+      "at": "2026-07-08T22:05:00Z"
     },
     {
       "id": "n08",
-      "text": "new flatmate labelled her fridge shelf day one. fair enough but. we label the things we don't trust each other with, that's what a label is",
-      "at": "2026-07-16T20:33:00Z"
+      "text": "deposit scheme email says your money is protected. protected from who. it's my money. they mean protected from me",
+      "at": "2026-07-12T11:47:00Z"
     },
     {
       "id": "n09",
-      "text": "typed my childhood landline number into a form today without thinking. thirty years. hands keep what the head files away and loses",
-      "at": "2026-07-19T15:58:00Z"
+      "text": "went into the hardware shop for lightbulbs and the sawdust just... stood there ten minutes. didn't buy anything. don't know what that was about",
+      "at": "2026-07-15T12:40:00Z"
     },
     {
       "id": "n10",
-      "text": "doing the inventory checklist. photographing scuffs I didn't make so I can prove I didn't make them. an hour of proving negatives about a hallway",
-      "at": "2026-07-22T17:26:00Z"
+      "text": "walked past the lock-up. someone's got gym equipment in there now, rowing machine, the lot. turns out it was only ever a room",
+      "at": "2026-07-21T15:58:00Z"
     },
     {
       "id": "n11",
       "text": "rent went out this morning. biggest thing I spend money on and there's no ceremony to it at all, just a standing order in the dark",
-      "at": "2026-07-25T08:03:00Z"
+      "at": "2026-07-24T08:03:00Z"
     },
     {
       "id": "n12",
-      "text": "walked into the hardware shop for lightbulbs and the sawdust smell just... stood there ten minutes. didn't buy anything. don't know what that was about",
-      "at": "2026-07-28T12:40:00Z"
+      "text": "doing the inventory checklist. photographing scuffs I didn't make so I can prove I didn't make them. an hour of proving negatives about a hallway",
+      "at": "2026-07-27T17:26:00Z"
     }
   ],
   "dreams": []
