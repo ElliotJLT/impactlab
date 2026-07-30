@@ -34,6 +34,10 @@
   /* Elevation — flat by default; the only lift is the warm focus glow. */
   --glow: 0 0 0 1px var(--accent), 0 0 24px -6px var(--accent);
 
+  /* Primary CTA — lit from the top, drawn from the bloom's family. Dark-mode label
+     (--accent-on) measures 8.77:1 on the light end and 6.59:1 on the accent. */
+  --accent-grad: linear-gradient(180deg, #FBA268 0%, var(--accent) 62%);
+
   /* Motion — physics, not easing. One curve, used sparingly. */
   --spring: 420ms cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -54,6 +58,9 @@
     --accent-on:     #FFFFFF;
     --danger:        #C0392E;
     --glow:          0 0 0 1px var(--accent), 0 4px 16px -8px var(--accent);
+    /* Light mode lifts the top only slightly — white-on-#B85512 is 4.83:1, still AA.
+       Going lighter than this fails, so don't brighten it without recomputing. */
+    --accent-grad:   linear-gradient(180deg, #B85512 0%, var(--accent) 62%);
     --bloom:
       radial-gradient(120% 70% at 50% -10%, rgb(255 150 70 / 0.48) 0%, rgb(255 150 70 / 0) 56%),
       radial-gradient(95% 60% at 66% 18%,   rgb(240 80 55 / 0.34)  0%, rgb(240 80 55 / 0) 58%),
@@ -119,6 +126,37 @@ body::before {
   0%, 100% { opacity: 0.25; transform: translateY(0) scale(1); }
   50%      { opacity: 1;    transform: translateY(-6px) scale(1.15); }
 }
+
+/* Capture → saved: the thought lifts off the screen rather than blinking out.
+   Sanctioned motion 1 in DESIGN.md. Applied under no-preference only, so
+   reduced-motion users get the same words as plain static text. */
+@keyframes rise-away {
+  0%   { opacity: 0; transform: translateY(8px); }
+  15%  { opacity: 1; transform: translateY(0); }
+  65%  { opacity: 1; transform: translateY(-3px); }
+  100% { opacity: 0; transform: translateY(-22px); }
+}
+
+/* History rows drift up into place, staggered — the week assembling itself. */
+@keyframes drift-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* The list dissolves into the canvas above the CTA instead of being cut by a
+   hard rule. Sits on the bottom bar, which carries the canvas colour. */
+.bar-scrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: var(--s-8);
+  background: linear-gradient(to top, var(--bg), transparent);
+  pointer-events: none;
+}
+
+/* Primary CTA fill — the token carries the verified contrast. */
+.cta-grad { background-image: var(--accent-grad); }
 
 /* Safe areas — apply to anything pinned to an edge */
 .pin-bottom { padding-bottom: max(var(--s-4), env(safe-area-inset-bottom)); }

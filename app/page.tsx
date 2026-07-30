@@ -29,7 +29,8 @@ export default function CapturePage() {
     setCount(next.notes.length);
     setText("");
     setJustSaved(true);
-    setTimeout(() => setJustSaved(false), 1600);
+    // Outlast the rise-away animation, or it unmounts mid-flight.
+    setTimeout(() => setJustSaved(false), 2000);
     textareaRef.current?.focus();
   }
 
@@ -46,7 +47,7 @@ export default function CapturePage() {
       {/* Fragment count — prominent, top-right corner. */}
       <Link
         href="/week"
-        className="absolute top-0 right-0 pin-top mt-[var(--s-4)] mr-[var(--s-4)] z-10 inline-flex items-center gap-[var(--s-1)] rounded-[var(--r-full)] border border-[var(--border)] bg-surface-raised px-[var(--s-4)] py-[var(--s-2)] text-[15px] font-medium min-h-[var(--tap-min)]"
+        className="absolute top-0 right-0 pin-top mt-[var(--s-4)] mr-[var(--s-4)] z-10 inline-flex items-center gap-[var(--s-2)] rounded-[var(--r-full)] border border-[var(--border)] bg-surface-raised px-[var(--s-5)] py-[var(--s-3)] text-[15px] font-medium min-h-[var(--tap)] [@media(hover:hover)]:hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
       >
         <span className="text-accent font-semibold">{count}</span>
         <span className="text-muted">this week →</span>
@@ -68,8 +69,11 @@ export default function CapturePage() {
       {/* The composer — bottom third, thumb reach. One merged field. */}
       <div className="flex-1 flex flex-col justify-end pb-[var(--s-6)] w-full max-w-[620px] mx-auto">
         {justSaved && (
-          <p className="text-[14px] text-accent font-medium text-center mb-[var(--s-3)]" role="status">
-            Caught. It’ll be here when you come back.
+          <p
+            className="text-[15px] text-accent font-medium text-center mb-[var(--s-3)] [@media(prefers-reduced-motion:no-preference)]:animate-[rise-away_1900ms_cubic-bezier(0.22,1,0.36,1)_forwards]"
+            role="status"
+          >
+            Caught. Sleep on it.
           </p>
         )}
 

@@ -134,3 +134,19 @@ on the new seed, the revealed thread is identical every time (n02,n05,n07,n09,n1
 collision spans 15–38 days, and the eureka fires only with the stage note. What it costs:
 two decent jokes (the wide-angle bit, the mould line) traded for a rehearsable demo, and
 the fallback had to be regenerated because it quoted the old note ids.
+
+## 014 — Week screen reversed and softened; gradient CTA; saved-toast lifts away
+**When:** 19:05 · **Who:** Elliot
+**Decision:** Week lists newest-first (the note you just caught is the one you see), cards
+drift in staggered, and the list dissolves into the bottom bar via a gradient scrim instead
+of a hard `border-t` — the bar now carries the canvas colour. Primary `Button` is filled with
+a new `--accent-grad` token (lit from the top) and a soft warm shadow, at 56px tall. The save
+confirmation is now "Caught. Sleep on it." and rises away rather than blinking out
+(`rise-away`, sanctioned motion 1). Capture's count pill got real padding and a full 48px
+tap target.
+**Why:** Elliot's call on the demo screens. Contrast recomputed rather than eyeballed: the
+gradient's light end measures 8.77:1 in dark and 4.83:1 in light against `--accent-on`/white,
+both AA — light mode cannot go brighter than `#B85512` without failing, which is why the two
+themes use different gradient stops. Both new animations are gated behind
+`prefers-reduced-motion: no-preference`, so reduced-motion users see static text at full
+opacity rather than an element stuck at `opacity: 0`.
