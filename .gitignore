@@ -36,3 +36,4 @@ pnpm-debug.log*
 
 # Conductor workspace scratch
 .context/
+.env*
