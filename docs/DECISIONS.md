@@ -42,4 +42,9 @@ The "why" is the part that earns its keep. In two hours someone will want to cha
 **Decision:** PWA installability via manifest, icons and HTTPS only. No offline support.
 **Why:** Service workers are the classic PWA time-sink and buy nothing in a live demo on venue wifi. The trade: the app won't work offline, which no judge will test.
 
+## 006 — Dream-cycle concept as placeholder; lanes split
+**When:** 17:05 · **Who:** Elliot
+**Decision:** Working concept "Sleep On It": voice-note fragments captured over weeks, an overnight dream cycle that deconstructs and collides them (quotes verbatim, never composes), rare eureka slot. Master prompt and output schema in `prompts/dream.md`, seed shape in `data/archive.seed.json`, app↔LLM contract in `docs/API.md` — all placeholder pending Samantha's scoping. Lanes: app scaffold is owned separately; Elliot owns the LLM side.
+**Why:** Builds on the decided Option 3 in `daily-1pc-merge-options.md` and keeps its no-generation constraint as a hard rule in the prompt. Splitting lanes now lets prompt tuning and app scaffolding run in parallel against one written contract instead of a conversation.
+
 <!-- next entry below -->

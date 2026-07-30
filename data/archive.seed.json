@@ -1,0 +1,28 @@
+{
+  "_readme": "PLACEHOLDER seed archive. Shape is settled; content is not. Seed-set owner: replace the notes with 10-12 standup-persona fragments spread across ~6 weeks. Observations and raw noticing, NOT punchlines (see daily-1pc-merge-options.md, 'Demo persona'). Most notes serve the stated priority; 4-5 quietly circle the dormant thread; the live note added on stage should complete the eureka. Timestamps matter: the dream weights distance between colliding notes.",
+  "user": {
+    "name": "Sam",
+    "practice": "standup",
+    "stated_priority": "an hour about renting in London",
+    "idea_shape": "observations",
+    "dormant_project": "the thing about my dad's workshop"
+  },
+  "notes": [
+    {
+      "id": "n01",
+      "text": "viewing today, the agent kept saying 'characterful' about the mould. third flat this month where the smell hits before the door's open",
+      "at": "2026-06-18T08:42:00Z"
+    },
+    {
+      "id": "n02",
+      "text": "um so, the landlord's 'quick inspection' — he knocked and was already inside by the second knock. like the knock was a courtesy to himself",
+      "at": "2026-06-24T19:15:00Z"
+    },
+    {
+      "id": "n03",
+      "text": "dad never labelled anything in the workshop but knew where everything was. I label everything and can't find anything. something there about... trusting your hands vs trusting the system, don't know",
+      "at": "2026-07-02T21:30:00Z"
+    }
+  ],
+  "dreams": []
+}

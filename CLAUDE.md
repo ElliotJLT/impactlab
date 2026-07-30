@@ -89,10 +89,10 @@ One owner per area. Cross-area change → tell the owner, or do it in a separate
 | Area | Owner | Notes |
 |---|---|---|
 | `docs/` | anyone | Append, don't rewrite others' entries |
-| _TBD once stack is picked_ | Zan | |
-| _TBD_ | Andrei | |
-| _TBD_ | Elliot | |
-| _TBD_ | Samantha | |
+| `prompts/`, `data/`, `docs/API.md` | Elliot | The LLM lane: master prompt, seed archive, API contract |
+| App scaffold + layout | _whoever is scaffolding — put your name here_ | Code against `docs/API.md` |
+| _TBD_ | | |
+| _TBD_ | | |
 
 Fill the areas in the moment the first code lands. An empty ownership table with four people committing is how you get merge hell at 18:30.
 
