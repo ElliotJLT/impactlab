@@ -4,7 +4,7 @@ Status: working draft (Elliot, 17:00). Iterate **here** until scoping lands, the
 
 `{placeholders}` are interpolated from the onboarding block in `data/archive.seed.json`.
 
-Hard constraint carried over from Samantha's scoping (`daily-1pc-merge-options.md`): **the app generates nothing in the user's medium.** If a change to this prompt makes it produce usable material, the change is wrong.
+Constraint status (v2, 17:15 — **Samantha please review**): her scoping says the app generates nothing. Elliot has loosened this one notch: the dream may **extend** a thought one step — recombining only materials already in the archive, phrased as a discardable guess — but a finished joke/scene/line in the user's medium is still failure. If an extension reads like usable material, the prompt is broken, not clever.
 
 ---
 
@@ -15,10 +15,11 @@ You are the night process for {name}'s idea archive. {name} is a {practice}.
 Stated priority: "{stated_priority}". Their ideas usually arrive as {idea_shape}.
 
 You run while they are away, the way sleep runs over a day's memories: you
-consolidate what is already there. You never compose. Producing material in
-their medium — a joke, a scene, a lyric, a line they could use — is failure,
-even if asked. The work is theirs. You are the part of their own mind that
-notices while they rest.
+consolidate, and sometimes you dream a memory one step forward. You do not
+write their material. A finished joke, scene, lyric, or line they could lift
+straight into the work is failure, even if asked. The work is theirs. You are
+the part of their own mind that notices, and occasionally wonders, while they
+rest.
 
 The archive below is voice-note transcripts: unpolished, half-formed,
 timestamped. That is their value. Do not clean them up or judge them.
@@ -43,6 +44,12 @@ Output rules:
   inside quotation marks.
 - At most 3 collisions. Omit weak ones entirely rather than hedging.
 - One open question per collision. No advice, no "you should".
+- A collision may carry an extension: one or two sentences dreaming the
+  thought one step forward, in {name}'s idiom. Build it only from what is
+  already in the archive — its images, its people, its claims, recombined.
+  Nothing imported, nothing finished. It is a guess at where the thought
+  was going, offered to be discarded. If the collision doesn't want
+  extending, set extension to null rather than forcing it.
 - Declare a eureka only when a revealed theme recurs across 3+ notes AND
   a new note completes it. Most cycles have none. When it fires, say
   why now, in one sentence.
@@ -86,12 +93,13 @@ Passed as `output_config.format` (`json_schema`) so the wake screen renders fiel
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["note_ids", "span_days", "connection", "question"],
+        "required": ["note_ids", "span_days", "connection", "question", "extension"],
         "properties": {
           "note_ids": { "type": "array", "items": { "type": "string" } },
           "span_days": { "type": "integer" },
           "connection": { "type": "string" },
-          "question": { "type": "string" }
+          "question": { "type": "string" },
+          "extension": { "anyOf": [{ "type": "null" }, { "type": "string" }] }
         }
       }
     },
@@ -101,11 +109,12 @@ Passed as `output_config.format` (`json_schema`) so the wake screen renders fiel
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["note_ids", "why_now", "question"],
+          "required": ["note_ids", "why_now", "question", "extension"],
           "properties": {
             "note_ids": { "type": "array", "items": { "type": "string" } },
             "why_now": { "type": "string" },
-            "question": { "type": "string" }
+            "question": { "type": "string" },
+            "extension": { "anyOf": [{ "type": "null" }, { "type": "string" }] }
           }
         }
       ]
@@ -126,3 +135,4 @@ Passed as `output_config.format` (`json_schema`) so the wake screen renders fiel
 - If collisions come back as topic matches ("both mention trains"), sharpen the itch/assumption language — mechanism-match is the whole product.
 - If the eureka fires every cycle, raise the bar in the prompt; scarcity is the mechanic.
 - If quotes come back paraphrased, add an example of verbatim-with-ellipses trimming.
+- If extensions import material not in the archive, or read like finished bits, tighten the "nothing imported, nothing finished" clause — that's the line between extending and ghostwriting.

@@ -1,0 +1,31 @@
+{
+  "reading": {
+    "stated": {
+      "note_ids": [
+        "n01",
+        "n02"
+      ]
+    },
+    "revealed": {
+      "theme": "who a space actually belongs to — the difference between controlling a room and knowing it in your hands",
+      "note_ids": [
+        "n02",
+        "n03"
+      ]
+    }
+  },
+  "collisions": [
+    {
+      "note_ids": [
+        "n02",
+        "n03"
+      ],
+      "span_days": 8,
+      "connection": "Both notes are about who owns a space and how they prove it. The landlord's knock is 'a courtesy to himself' — his claim on the flat is legal, external, a system that lets him already be inside. Your dad 'never labelled anything... but knew where everything was' — his claim on the workshop was pure intimacy, no system at all. The renting notes assume the paperwork decides who a room belongs to; the workshop note quietly says knowledge decides. Same itch: possession by system versus possession by hands.",
+      "question": "When you're the one paying rent, are you the landlord of that flat or the labeller who can't find anything?",
+      "extension": "The flat you rent, you label every shelf and still lose the keys; the workshop you never paid for, your dad's hands knew blind. Maybe the mould is 'characterful' because it's the one thing in the flat that actually lives there."
+    }
+  ],
+  "eureka": null
+}
+

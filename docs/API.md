@@ -22,6 +22,8 @@ POST /api/dream
 
 `eureka` is `null` on most cycles by design. The wake screen must render both cases.
 
+Collisions and the eureka each carry an `extension` (string or `null`): the dream's one-step guess at where the thought was going. **Render it visually distinct from the user's own quoted words** — muted/italic with a label like "the dream's guess" — the product's honesty depends on the user always seeing which words are theirs and which are the machine wondering.
+
 ## Route implementation notes
 
 - `@anthropic-ai/sdk`, `claude-opus-4-8`, `thinking: { type: "adaptive" }`, `max_tokens: 4000`, non-streaming, `output_config.format` = the json_schema in `prompts/dream.md`.

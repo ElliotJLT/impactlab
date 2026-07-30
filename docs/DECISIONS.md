@@ -47,4 +47,9 @@ The "why" is the part that earns its keep. In two hours someone will want to cha
 **Decision:** Working concept "Sleep On It": voice-note fragments captured over weeks, an overnight dream cycle that deconstructs and collides them (quotes verbatim, never composes), rare eureka slot. Master prompt and output schema in `prompts/dream.md`, seed shape in `data/archive.seed.json`, app↔LLM contract in `docs/API.md` — all placeholder pending Samantha's scoping. Lanes: app scaffold is owned separately; Elliot owns the LLM side.
 **Why:** Builds on the decided Option 3 in `daily-1pc-merge-options.md` and keeps its no-generation constraint as a hard rule in the prompt. Splitting lanes now lets prompt tuning and app scaffolding run in parallel against one written contract instead of a conversation.
 
+## 007 — Dream may extend, one step, from archive materials only
+**When:** 17:15 · **Who:** Elliot — **needs Samantha's sign-off, loosens her constraint**
+**Decision:** Collisions and eurekas may carry an `extension`: 1–2 sentences dreaming the thought forward, recombining only what's already in the archive, rendered visually distinct from the user's quoted words. Finished material in the user's medium remains failure.
+**Why:** Sleeping on something doesn't just replay, it runs memories forward — and Elliot wants the hidden-intersection value, not just pattern reflection. The line moves from "never generates" to "never ghostwrites": extensions are discardable guesses built from your own materials. If that line proves uncomfortable, deleting the extension rule from `prompts/dream.md` and the field from the schema reverts it cleanly.
+
 <!-- next entry below -->
