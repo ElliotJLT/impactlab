@@ -1,0 +1,38 @@
+# Secrets — never commit these
+.env
+.env.local
+.env*.local
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# Deploy
+.vercel
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editors / OS
+.DS_Store
+.idea/
+*.swp
+
+# Claude Code — local per-person overrides (shared settings.json IS committed)
+.claude/settings.local.json
+
+# Conductor workspace scratch
+.context/
