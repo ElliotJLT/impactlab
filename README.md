@@ -1,4 +1,4 @@
-# Sleep On It
+# Sleep On It 🐑
 
 You have half-ideas all day. In the shower, on the bus, walking home. You mumble them into your phone and never listen back. Everyone's notes app is a graveyard of them.
 
