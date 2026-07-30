@@ -57,8 +57,12 @@ export default function ReadPage() {
   return (
     <main className="flex flex-col min-h-[100dvh] w-full px-[var(--s-4)] pin-top pb-[var(--s-7)] [&>*]:w-full [&>*]:max-w-[560px] [&>*]:mx-auto">
       <header className="pt-[var(--s-5)] pb-[var(--s-4)] relative text-center">
-        <Link href="/week" className="absolute left-0 top-[var(--s-5)] text-[13px] text-muted underline underline-offset-4">
-          ← week
+        <Link
+          href="/week"
+          aria-label="Back"
+          className="absolute left-0 top-[var(--s-4)] inline-flex items-center justify-center w-[var(--tap)] h-[var(--tap)] rounded-[var(--r-full)] text-muted text-[22px] [@media(hover:hover)]:hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+        >
+          <span aria-hidden>←</span>
         </Link>
         <h1 className="text-[clamp(26px,5.5vw,36px)] font-[family-name:var(--font-serif)] leading-[1.15] px-[var(--s-7)]">
           {state === "dreaming" ? "Sleeping on it…" : "While you were away"}

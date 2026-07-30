@@ -19,8 +19,12 @@ export default function WeekPage() {
   return (
     <main className="flex flex-col min-h-[100dvh] w-full px-[var(--s-4)] pin-top">
       <header className="w-full max-w-[560px] mx-auto pt-[var(--s-5)] pb-[var(--s-4)] relative text-center">
-        <Link href="/" className="absolute left-0 top-[var(--s-5)] text-[13px] text-muted underline underline-offset-4">
-          ← capture
+        <Link
+          href="/"
+          aria-label="Back"
+          className="absolute left-0 top-[var(--s-4)] inline-flex items-center justify-center w-[var(--tap)] h-[var(--tap)] rounded-[var(--r-full)] text-muted text-[22px] [@media(hover:hover)]:hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+        >
+          <span aria-hidden>←</span>
         </Link>
         <h1 className="text-[clamp(28px,6vw,40px)] font-[family-name:var(--font-serif)] leading-[1.1]">
           Everything you’ve caught
