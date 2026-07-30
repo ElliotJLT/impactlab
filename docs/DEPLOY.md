@@ -40,3 +40,10 @@ credits per Read, not the free local CLI path. Fine for the event credits; just 
 - Front-end team is mid-design; entry-UX guidance is in `docs/ENTRY-UX.md` when they want it.
 
 Ping me if anything on deploy is off and I'll jump on it.
+
+---
+
+**Update (Elliot, 18:30):** the "placeholder brain deploys" caveat above is resolved — `main`
+now runs `/api/dream` (merged contract, `claude-opus-4-8`, fallback insurance) and the
+placeholder `/api/weekly-read` is deleted. See DECISIONS 011/012. Deploying as project
+**muse** via the CLI.
