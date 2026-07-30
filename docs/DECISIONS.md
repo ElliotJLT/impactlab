@@ -42,36 +42,47 @@ The "why" is the part that earns its keep. In two hours someone will want to cha
 **Decision:** PWA installability via manifest, icons and HTTPS only. No offline support.
 **Why:** Service workers are the classic PWA time-sink and buy nothing in a live demo on venue wifi. The trade: the app won't work offline, which no judge will test.
 
-## 006 — Idea locked (Option 3, single-signal). Working title: Nocturne
-**When:** 17:10 · **Who:** Samantha
-**Decision:** Building a capture app that surfaces the recurring thread a creative keeps circling.
-**Name is a working title only — "Nocturne" pending team sign-off.** It evokes the dream/night
-framing: the weekly read does what sleep does to memory — consolidates scattered fragments and
-surfaces the connection you didn't consciously make. If the name changes, it lives in a handful
-of spots: `layout.tsx`, `manifest.ts`, `page.tsx` header, `read/page.tsx` footer, the
-`STORAGE_KEY` in `lib/fragments.ts`. One general engine tailored to the user's practice at signup; documentary
-filmmaker is the *demo* persona, not a vertical. The Claude brain has two jobs kept separate
-(interpret in idiom · surface the buried thread against the stated subject) and **generates
-nothing** — it only reflects the user's own fragments back.
-**Why:** Option 3 from the merge doc, simplified. Dropped the stated-priority/divergence input:
-the app just surfaces recurrence and distinguishes buried thread vs stated subject. Proven
-end-to-end before scaffolding (see `prototype/`), so the risky part was de-risked first.
+## 006 — Dream-cycle concept as placeholder; lanes split
+**When:** 17:05 · **Who:** Elliot
+**Decision:** Working concept "Sleep On It": voice-note fragments captured over weeks, an overnight dream cycle that deconstructs and collides them (quotes verbatim, never composes), rare eureka slot. Master prompt and output schema in `prompts/dream.md`, seed shape in `data/archive.seed.json`, app↔LLM contract in `docs/API.md` — all placeholder pending Samantha's scoping. Lanes: app scaffold is owned separately; Elliot owns the LLM side.
+**Why:** Builds on the decided Option 3 in `daily-1pc-merge-options.md` and keeps its no-generation constraint as a hard rule in the prompt. Splitting lanes now lets prompt tuning and app scaffolding run in parallel against one written contract instead of a conversation.
 
-## 007 — Model: Sonnet 5 for the demo
-**When:** 17:10 · **Who:** Samantha
-**Decision:** `claude-sonnet-5` for the weekly read. Opus 4.8 kept as fallback.
-**Why:** Ran the same fragments through both. Sonnet's count contrast (buried 6× vs stated 3×)
-reads better on a screen in two seconds than Opus's more literal 6-vs-6 tie, and it's cheaper
-and faster on a live call. Opus's prose was marginally finer — not worth the trade for a demo.
+## 007 — Dream may extend, one step, from archive materials only
+**When:** 17:15 · **Who:** Elliot — **needs Samantha's sign-off, loosens her constraint**
+**Decision:** Collisions and eurekas may carry an `extension`: 1–2 sentences dreaming the thought forward, recombining only what's already in the archive, rendered visually distinct from the user's quoted words. Finished material in the user's medium remains failure.
+**Why:** Sleeping on something doesn't just replay, it runs memories forward — and Elliot wants the hidden-intersection value, not just pattern reflection. The line moves from "never generates" to "never ghostwrites": extensions are discardable guesses built from your own materials. If that line proves uncomfortable, deleting the extension rule from `prompts/dream.md` and the field from the schema reverts it cleanly.
 
-## 008 — Deploy to Railway, not Vercel (overrides 005's platform)
+## 008 — App scaffold landed (Next.js + Railway). Working title: Nocturne
+**When:** 17:10 · **Who:** Samantha
+**Decision:** Scaffolded the app in parallel with Elliot's LLM lane: Next.js 16 + TS + Tailwind v4,
+three screens (Capture / Week / Read), PWA per `DESIGN.md`. Working title "Nocturne" (pending team
+sign-off) — same dream/night framing as "Sleep On It". Name lives in `layout.tsx`, `manifest.ts`,
+`page.tsx`, `read/page.tsx`, and `STORAGE_KEY` in `lib/fragments.ts` if it changes.
+**Why:** De-risked the LLM side end-to-end before scaffolding (see `samantha/claude-brain` branch).
+The scaffold owns the app lane per the `CLAUDE.md` ownership table; it codes against Elliot's
+`docs/API.md` contract (reconciliation pending — see 010).
+
+## 009 — Deploy to Railway, not Vercel (overrides 005's platform)
 **When:** 17:20 · **Who:** Samantha (team agreed)
 **Decision:** Deploy to Railway. Next.js runs as a long-lived Node server (`npm run start`,
 binds Railway's `$PORT`); config in `railway.json`, Node pinned in `.nvmrc`. `ANTHROPIC_API_KEY`
-set in Railway's env — production uses the SDK. Local dev needs no key: the API route
-auto-falls-back to the Claude Code CLI (`claude -p`, free on the Max plan) when no key is set.
+set in Railway's env. **Note:** Elliot's `docs/API.md` assumes Vercel (`maxDuration = 60`,
+env-in-project-settings) — those specifics move to Railway equivalents; the timeout concern
+still applies (a long dream cycle needs the server to not kill the request).
 **Why:** Team's platform of choice and matches our house conventions; DECISION 004/005's
-mobile-PWA/HTTPS reasoning is unchanged — only the host moves. Trade: Railway needs a start
-command and an env var Vercel would have inferred, but it's the platform we operate confidently.
+mobile-PWA/HTTPS reasoning is unchanged — only the host moves.
+
+## 010 — Extensions approved (Option B); two brains merged into one prompt
+**When:** 17:30 · **Who:** Samantha (signs off 007) + Elliot
+**Decision:** Samantha signs off Elliot's 007 extension loosening — **Option B**. The AI's role is
+to help the user connect the dots between their own fragments, which is core value, not ghostwriting;
+extensions recombine only archive material and render visually distinct. The two independently-built
+brains (Samantha's `lib/prompt.ts` buried-vs-stated reflection + Elliot's `prompts/dream.md`
+mechanism-match/collisions/eureka) are reconciled into one master prompt — draft for review in
+`docs/master-prompt-MERGED-for-review.md`. Next: agree that prompt, then update the route + Read
+screen to Elliot's `POST /api/dream` contract and retire the placeholder `/api/weekly-read`.
+**Why:** Option B was flagged for Samantha's call in 007; approving it aligns both brains, so the
+merge is additive not competitive. Keeping both people's work (mechanism-match is the sharpest idea
+in either; the buried-vs-stated frame is the proven "oh") beats picking a winner.
 
 <!-- next entry below -->

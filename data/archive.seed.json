@@ -1,0 +1,74 @@
+{
+  "_readme": "Seed archive with the eureka arc built in. Two threads: RENTING (stated priority, 7 notes) and a buried one — knowing/marking a space by hand vs owning it by paperwork (n03, n06, n09, n12, plus n08 bridging). The buried thread never announces itself; each note reads as a stray observation. The rehearsed stage note (_stage_note below) completes it: eureka should fire only when that note is added. Verify both halves with: node prompts/try.mjs  (expect eureka null)  and  node prompts/try.mjs --stage  (expect eureka). Voice-note texture is deliberate — do not clean up.",
+  "_stage_note": "renewal email from the landlord. no picture hooks, no blu-tack, repainting counts as damage. a whole year somewhere where evidence that I live there is a chargeable offence",
+  "user": {
+    "name": "Sam",
+    "practice": "standup",
+    "stated_priority": "an hour about renting in London",
+    "idea_shape": "observations",
+    "dormant_project": "the thing about my dad's workshop"
+  },
+  "notes": [
+    {
+      "id": "n01",
+      "text": "viewing today, the agent kept saying 'characterful' about the mould. third flat this month where the smell hits before the door's open",
+      "at": "2026-06-18T08:42:00Z"
+    },
+    {
+      "id": "n02",
+      "text": "um so, the landlord's 'quick inspection' — he knocked and was already inside by the second knock. like the knock was a courtesy to himself",
+      "at": "2026-06-24T19:15:00Z"
+    },
+    {
+      "id": "n03",
+      "text": "dad never labelled anything in the workshop but knew where everything was. I label everything and can't find anything. something there about... trusting your hands vs trusting the system, don't know",
+      "at": "2026-07-02T21:30:00Z"
+    },
+    {
+      "id": "n04",
+      "text": "the listing photos are all wide-angle. the photos are of a flat that doesn't exist. you're viewing the lens really",
+      "at": "2026-07-04T13:05:00Z"
+    },
+    {
+      "id": "n05",
+      "text": "eight of us queuing in the rain to see a 'cosy' one-bed. the agent had the only umbrella. something about who stays dry in this market",
+      "at": "2026-07-07T18:20:00Z"
+    },
+    {
+      "id": "n06",
+      "text": "found dad's old pencil in a jacket. he sharpened them with a knife, always. I own a sharpener. can't find it. the knife's in my head somewhere still",
+      "at": "2026-07-10T09:12:00Z"
+    },
+    {
+      "id": "n07",
+      "text": "deposit scheme email says your money is protected. protected from who. it's my money. they mean protected from me",
+      "at": "2026-07-13T11:47:00Z"
+    },
+    {
+      "id": "n08",
+      "text": "new flatmate labelled her fridge shelf day one. fair enough but. we label the things we don't trust each other with, that's what a label is",
+      "at": "2026-07-16T20:33:00Z"
+    },
+    {
+      "id": "n09",
+      "text": "typed my childhood landline number into a form today without thinking. thirty years. hands keep what the head files away and loses",
+      "at": "2026-07-19T15:58:00Z"
+    },
+    {
+      "id": "n10",
+      "text": "doing the inventory checklist. photographing scuffs I didn't make so I can prove I didn't make them. an hour of proving negatives about a hallway",
+      "at": "2026-07-22T17:26:00Z"
+    },
+    {
+      "id": "n11",
+      "text": "rent went out this morning. biggest thing I spend money on and there's no ceremony to it at all, just a standing order in the dark",
+      "at": "2026-07-25T08:03:00Z"
+    },
+    {
+      "id": "n12",
+      "text": "walked into the hardware shop for lightbulbs and the sawdust smell just... stood there ten minutes. didn't buy anything. don't know what that was about",
+      "at": "2026-07-28T12:40:00Z"
+    }
+  ],
+  "dreams": []
+}
