@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ── Design tokens — from docs/DESIGN.md. No raw hex in components. ── */
+:root {
+  --bg:            #F7F8FA;
+  --surface:       #FFFFFF;
+  --border:        #E2E6EC;
+
+  --text:          #12151C;
+  --text-muted:    #5A6472;
+
+  --accent:        #16776F;
+  --accent-on:     #FFFFFF;
+
+  --danger:        #C2413B;
+
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
+
+  --r-sm: 8px; --r-md: 12px; --r-lg: 20px; --r-full: 999px;
+
+  --shadow: 0 1px 2px rgb(18 21 28 / 0.06), 0 4px 12px rgb(18 21 28 / 0.05);
+
+  --tap-min: 44px;
+  --tap:     48px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:         #10131A;
+    --surface:    #191E28;
+    --border:     #2A3140;
+    --text:       #F2F4F7;
+    --text-muted: #9AA5B4;
+    --accent:     #3FBFB2;
+    --accent-on:  #08201E;
+    --danger:     #F0857E;
+  }
+}
+
+/* Expose tokens to Tailwind v4 utilities (bg-bg, text-muted, bg-accent, …) */
+@theme inline {
+  --color-bg:        var(--bg);
+  --color-surface:   var(--surface);
+  --color-border:    var(--border);
+  --color-text:      var(--text);
+  --color-muted:     var(--text-muted);
+  --color-accent:    var(--accent);
+  --color-accent-on: var(--accent-on);
+  --color-danger:    var(--danger);
+
+  --font-sans:  var(--font-geist-sans);
+  --font-mono:  var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+html { color-scheme: light dark; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;   /* kills pull-to-refresh mid-dictation */
+}
+
+/* Safe areas — apply to anything pinned to an edge */
+.pin-bottom { padding-bottom: max(var(--s-4), env(safe-area-inset-bottom)); }
+.pin-top    { padding-top:    max(var(--s-4), env(safe-area-inset-top)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
