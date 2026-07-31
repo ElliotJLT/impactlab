@@ -150,3 +150,13 @@ both AA — light mode cannot go brighter than `#B85512` without failing, which 
 themes use different gradient stops. Both new animations are gated behind
 `prefers-reduced-motion: no-preference`, so reduced-motion users see static text at full
 opacity rather than an element stuck at `opacity: 0`.
+
+## 015 — Week fragments are borderless (team call)
+**When:** 19:20 · **Who:** Samantha (team agreed)
+**Decision:** The fragment list on Week has **no per-item borders/cards** — plain items with
+generous spacing. This overrode 014's bordered `Card` styling during a near-simultaneous merge;
+the borderless version was kept deliberately, not by accident. Elliot's drift-in animation,
+newest-first order, "N fragments, newest first" subtitle, and the "Muse works on these
+overnight" footer were all preserved.
+**Why:** The team agreed offline that the borderless list reads calmer for a low-contrast
+history screen. Logging it so nobody re-adds the borders thinking the merge dropped them.
